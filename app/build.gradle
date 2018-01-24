@@ -37,5 +37,5 @@ dependencies {
     compile 'com.android.support:cardview-v7:26.1.0'
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.3.4'
-
+    compile 'com.journeyapps:zxing-android-embedded:+'
 }
