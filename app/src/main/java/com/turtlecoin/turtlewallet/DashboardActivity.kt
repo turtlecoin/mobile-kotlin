@@ -65,6 +65,10 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 setTitle(getString(R.string.dashboard))
                 showFragment(TotalBalanceFragment())
             }
+            R.id.address_book -> {
+                setTitle(getString(R.string.address_book))
+                showFragment(AddressBookFragment())
+            }
             R.id.network_info -> {
                 setTitle(getString(R.string.network_info))
                 showFragment(NetworkInfoFragment())
@@ -93,5 +97,11 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     fun walletOnClick(view: View) {
         val intent = Intent(this, WalletActivity::class.java);
         startActivity(intent)
+    }
+
+    fun addContactOnClick(view: View) {
+        val intent = Intent(this, NewContactActivity::class.java);
+        startActivity(intent)
+
     }
 }

@@ -11,6 +11,11 @@
             android:title="@string/dashboard" />
 
         <item
+            android:id="@+id/address_book"
+            android:icon="@drawable/ic_address_book"
+            android:title="@string/address_book" />
+
+        <item
             android:id="@+id/network_info"
             android:icon="@drawable/ic_network_info"
             android:title="@string/network_info" />

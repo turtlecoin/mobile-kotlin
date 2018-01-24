@@ -39,4 +39,11 @@
     <string name="zxing_license_title">ZXing (Zebra Crossing) barcode scanning library for Java, Android</string>
     <string name="qr_scan_failed">Scan failed, please try again</string>
     <string name="qr_scan_wrong">Scan TRTL Addresses only</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="address_book">Address Book</string>
+    <string name="add_new_contact">+ ADD NEW CONTACT</string>
+    <string name="name">Name</string>
+    <string name="add">Add</string>
+    <string name="no_contacts_text">No Contacts Yet</string>
+    <string name="new_contact">New Contact</string>
 </resources>

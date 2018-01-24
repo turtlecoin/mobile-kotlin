@@ -1,27 +1,40 @@
 package com.turtlecoin.turtlewallet
 
+import android.content.Intent
+import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
-import android.content.Intent
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_send_coin.*
 import com.google.zxing.integration.android.IntentIntegrator
 import com.turtlecoin.turtlewallet.util.AddressValidator
+import kotlinx.android.synthetic.main.activity_new_contact.*
+import kotlinx.android.synthetic.main.fragment_address_book.*
 
-class SendCoinActivity : AppCompatActivity() {
+class NewContactActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_send_coin)
+        setContentView(R.layout.activity_new_contact)
 
         // Enable the Up button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == android.R.id.home) {
+            finish()
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    // TODO: refactor readQRCodeOnClick and onActivityResult.
+    // They are copied from SendCoinActivity. They should share the same code
     // Open QR Intent
     fun readQRCodeOnClick(view: View) {
-        val integrator = IntentIntegrator(this@SendCoinActivity)
+        val integrator = IntentIntegrator(this)
         integrator.setBeepEnabled(false)
         integrator.initiateScan()
     }
@@ -43,5 +56,9 @@ class SendCoinActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, R.string.qr_scan_failed, Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun addOnClick(view: View) {
+        // TODO: store data locally
     }
 }
