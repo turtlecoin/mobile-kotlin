@@ -27,7 +27,7 @@ class ReceiveCoinActivity : AppCompatActivity() {
         // Enable the Up button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        qr.setImageBitmap(encodeAsBitmap(userAddress, 400,400))
+        qr.setImageBitmap(encodeAsBitmap(userAddress, 400, 400))
     }
 
     // Copy userAddress into Android Clipboard
