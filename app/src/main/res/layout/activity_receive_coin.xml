@@ -30,7 +30,7 @@
         android:background="@null"
         android:textColor="@color/mediumTurtleGreen"
         android:textAllCaps="false"
-        android:onClick="copyAddress"
+        android:onClick="copyAddressOnClick"
         android:text="TRTLabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"/>
     
     <android.support.v7.widget.AppCompatImageView
