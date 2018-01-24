@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.turtlecoin.turtlewallet.TotalBalanceFragment" >
+
+    <TextView
+        android:id="@+id/total_balance_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/page_margin"
+        android:layout_marginStart="@dimen/page_margin"
+        android:layout_marginLeft="@dimen/page_margin"
+        android:layout_marginRight="@dimen/page_margin"
+        android:layout_marginEnd="@dimen/page_margin"
+        android:text="@string/total_balance" />
+
+    <TextView
+        android:id="@+id/total_trtl_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="12.3MM TRTL"
+        android:textColor="@color/darkTextColor"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_below="@id/total_balance_title"
+        android:layout_alignLeft="@id/total_balance_title"
+        android:layout_alignStart="@id/total_balance_title" />
+
+    <TextView
+        android:id="@+id/total_exchange_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="B123,456.78"
+        android:layout_marginLeft="@dimen/half_margin"
+        android:layout_alignBottom="@id/total_trtl_balance"
+        android:layout_toRightOf="@id/total_trtl_balance"
+        android:layout_toEndOf="@id/total_trtl_balance"
+        android:layout_marginStart="@dimen/page_margin" />
+
+    <HorizontalScrollView
+        android:id="@+id/wallets_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_below="@id/total_trtl_balance"
+        android:layout_alignLeft="@id/total_trtl_balance"
+        android:layout_alignStart="@id/total_trtl_balance"
+        android:layout_marginTop="8dp">
+    <LinearLayout
+        android:id="@+id/wallets_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true">
+
+        <include layout="@layout/wallet_button"/>
+        <include layout="@layout/wallet_button"/>
+    </LinearLayout>
+    </HorizontalScrollView>
+    <TextView
+        android:id="@+id/market_data_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/page_margin"
+        android:text="@string/market_data"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/darkTextColor"
+        android:layout_below="@id/wallets_scroll"
+        android:layout_alignLeft="@id/wallets_scroll"
+        android:layout_alignStart="@id/wallets_scroll" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/market_data_mockup"
+        android:scaleType="fitStart"
+        android:layout_marginTop="@dimen/half_margin"
+        android:layout_below="@id/market_data_title" />
+
+
+</RelativeLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.turtlecoin.turtlewallet.SendCoinActivity">
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:stretchColumns="0,1">
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/recipients_address"
+                android:gravity="fill"
+                android:textSize="13sp"
+                android:layout_span="2"/>
+        </TableRow>
+
+        <TableRow>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_span="2">
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/address"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:layout_height="48dp"
+                    android:layout_width="48dp"
+                    android:src="@drawable/ic_read_qr"
+                    android:background="@null"
+                    android:tint="@color/darkTextColor"
+                    android:onClick="readQRCodeOnClick"/>
+            </LinearLayout>
+
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/trtl_ticker"
+                android:layout_weight="1"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:layout_weight="1"
+                android:text="@string/btc_ticker"/>
+        </TableRow>
+        <TableRow>
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:hint="100" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:hint="0.1"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/send"
+                android:layout_marginTop="@dimen/page_margin"
+                android:layout_span="2"
+                android:textColor="@color/white"
+                android:background="@drawable/arc_corner"/>
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>
