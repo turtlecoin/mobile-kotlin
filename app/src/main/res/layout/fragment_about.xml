@@ -1,0 +1,48 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.turtlecoin.turtlewallet.AboutFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/page_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:textColor="@color/darkTextColor"
+            android:text="@string/licenses" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/page_margin"
+            android:textColor="@color/darkTextColor"
+            android:text="ZXing (Zebra Crossing) barcode scanning library for Java, Android" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/half_margin"
+            android:textColor="@color/mediumTurtleGreen"
+            android:text="@string/apache_license_v2_0" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/half_margin"
+            android:textColor="@color/mediumTurtleGreen"
+            android:text="@string/zxing_github_link" />
+
+    </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>

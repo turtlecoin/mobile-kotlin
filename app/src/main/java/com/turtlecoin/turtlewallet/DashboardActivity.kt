@@ -66,6 +66,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.network_info -> {
                 showFragment(NetworkInfoFragment())
             }
+            R.id.about -> {
+                showFragment(AboutFragment())
+            }
             R.id.log_out -> {
                 finish()
             }

@@ -32,4 +32,9 @@
     <string name="loading">loading...</string>
     <string name="transactions">Transactions</string>
     <string name="clipboard_copied">Address copied to clipboard</string>
+
+    <string name="about">About</string>
+    <string name="licenses">Licenses</string>
+    <string name="apache_license_v2_0"><u>Apache License v2.0</u></string>
+    <string name="zxing_github_link"><u>https://github.com/zxing/zxing</u></string>
 </resources>
