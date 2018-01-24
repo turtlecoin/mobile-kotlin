@@ -28,7 +28,7 @@
                 android:orientation="horizontal"
                 android:layout_span="2">
                 <EditText
-                    android:id="@+id/address"
+                    android:id="@+id/et_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="@string/address"
