@@ -31,7 +31,7 @@ class ReceiveCoinActivity : AppCompatActivity() {
     }
 
     // Copy userAddress into Android Clipboard
-    fun copyAddress(view: View) {
+    fun copyAddressOnClick(view: View) {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("Address", userAddress)
         clipboard.primaryClip = clip
