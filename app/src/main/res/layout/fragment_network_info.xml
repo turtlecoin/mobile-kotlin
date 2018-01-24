@@ -1,0 +1,69 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.turtlecoin.turtlewallet.NetworkInfoFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/page_margin">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="14sp"
+            android:text="@string/height" />
+        <TextView
+            android:id="@+id/height"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/mediumTurtleGreen"
+            android:textSize="16sp"
+            android:text="@string/loading" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/hash_rate"
+            android:textSize="14sp"
+            android:layout_marginTop="@dimen/page_margin"
+/>
+        <TextView
+            android:id="@+id/hash_rate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/mediumTurtleGreen"
+            android:textSize="16sp"
+            android:text="@string/loading" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="14sp"
+            android:text="@string/supply"
+            android:layout_marginTop="@dimen/page_margin"
+/>
+        <TextView
+            android:id="@+id/supply"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/mediumTurtleGreen"
+            android:textSize="16sp"
+            android:text="@string/loading" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/difficulty"
+            android:textSize="14sp"
+            android:layout_marginTop="@dimen/page_margin"
+/>
+        <TextView
+            android:id="@+id/difficulty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/mediumTurtleGreen"
+            android:textSize="16sp"
+            android:text="@string/loading" />
+    </LinearLayout>
+
+
+</FrameLayout>
