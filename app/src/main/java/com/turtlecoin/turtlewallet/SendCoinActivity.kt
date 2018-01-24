@@ -8,6 +8,7 @@ import android.content.Intent
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_send_coin.*
 import com.google.zxing.integration.android.IntentIntegrator
+import com.turtlecoin.turtlewallet.util.AddressValidator
 
 class SendCoinActivity : AppCompatActivity() {
 
@@ -26,22 +27,21 @@ class SendCoinActivity : AppCompatActivity() {
     }
 
     // Deal with QR Result
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent) {
-        val scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent)
-        if (scanResult != null) {
-            val contents = intent.getStringExtra("SCAN_RESULT")
-            if(isTRTLAddress(contents)) {
-                et_address.setText(contents)
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        if (intent != null) { // Cancelled scanning
+            val scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent)
+            if (scanResult != null) {
+                val contents = intent.getStringExtra("SCAN_RESULT")
+                if (AddressValidator(contents)) {
+                    address.setText(contents)
+                } else {
+                    Toast.makeText(this, R.string.qr_scan_wrong, Toast.LENGTH_LONG).show()
+                }
             } else {
-                Toast.makeText(this, R.string.qr_scan_wrong, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.qr_scan_failed, Toast.LENGTH_LONG).show()
             }
         } else {
-            Toast.makeText(this, R.string.qr_scan_failed, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.qr_scan_failed, Toast.LENGTH_LONG).show()
         }
-    }
-
-    // Criteria for a TRTL Address
-    private fun isTRTLAddress(address: String): Boolean {
-        return (address.length == 99 && address.startsWith("TRTL"))
     }
 }
