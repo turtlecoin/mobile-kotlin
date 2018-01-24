@@ -23,6 +23,7 @@ class SendCoinActivity : AppCompatActivity() {
     // Open QR Intent
     fun readQRCodeOnClick(view: View) {
         val integrator = IntentIntegrator(this@SendCoinActivity)
+        integrator.setBeepEnabled(false)
         integrator.initiateScan()
     }
 
