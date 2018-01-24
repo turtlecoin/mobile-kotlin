@@ -31,4 +31,5 @@
     <string name="supply">Supply</string>
     <string name="loading">loading...</string>
     <string name="transactions">Transactions</string>
+    <string name="clipboard_copied">Address copied to clipboard</string>
 </resources>
