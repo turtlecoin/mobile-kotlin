@@ -11,16 +11,12 @@ import com.turtlecoin.turtlewallet.util.HashFormatter
 import java.text.NumberFormat
 import com.turtlecoin.turtlewallet.util.CurrentLocale
 
-/**
- * A simple [Fragment] subclass.
- */
 class NetworkInfoFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        // Inflate the layout for this fragment
         return inflater!!.inflate(R.layout.fragment_network_info, container, false)
 
     }
@@ -47,7 +43,6 @@ class NetworkInfoFragment : Fragment() {
                     activity.findViewById<TextView>(R.id.height).setText(numberFormat.format(height))
                     activity.findViewById<TextView>(R.id.supply).setText(numberFormat.format(supply) + " TRTL")
                 })
-
             } catch (e: Exception) {
                 e.printStackTrace()
             }
