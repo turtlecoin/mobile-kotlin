@@ -32,10 +32,11 @@
     <string name="loading">loading...</string>
     <string name="transactions">Transactions</string>
     <string name="clipboard_copied">Address copied to clipboard</string>
-
     <string name="about">About</string>
     <string name="licenses">Licenses</string>
     <string name="apache_license_v2_0">http://www.apache.org/licenses/LICENSE-2.0.html</string>
     <string name="zxing_github_link">https://github.com/zxing/zxing</string>
     <string name="zxing_license_title">ZXing (Zebra Crossing) barcode scanning library for Java, Android</string>
+    <string name="qr_scan_failed">Scan failed, please try again</string>
+    <string name="qr_scan_wrong">Scan TRTL Addresses only</string>
 </resources>
