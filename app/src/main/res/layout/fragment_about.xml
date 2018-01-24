@@ -26,20 +26,21 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/page_margin"
             android:textColor="@color/darkTextColor"
-            android:text="ZXing (Zebra Crossing) barcode scanning library for Java, Android" />
+            android:text="@string/zxing_license_title" />
 
         <TextView
+            android:id="@+id/apache_v2_0_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/half_margin"
-            android:textColor="@color/mediumTurtleGreen"
+            android:autoLink="web"
             android:text="@string/apache_license_v2_0" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/half_margin"
-            android:textColor="@color/mediumTurtleGreen"
+            android:autoLink="web"
             android:text="@string/zxing_github_link" />
 
     </LinearLayout>
