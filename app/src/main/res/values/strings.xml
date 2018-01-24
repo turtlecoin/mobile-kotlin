@@ -32,4 +32,6 @@
     <string name="loading">loading...</string>
     <string name="transactions">Transactions</string>
     <string name="clipboard_copied">Address copied to clipboard</string>
+    <string name="qr_scan_failed">Scan failed, please try again</string>
+    <string name="qr_scan_wrong">Scan TRTL Addresses only</string>
 </resources>
