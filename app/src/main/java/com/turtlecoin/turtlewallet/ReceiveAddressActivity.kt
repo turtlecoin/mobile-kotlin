@@ -63,15 +63,17 @@ class ReceiveAddressActivity : AppCompatActivity() {
             R.id.action_delete -> {
                 val deleteAlert = AlertDialog.Builder(this).create()
                 deleteAlert.setTitle(getString(R.string.delete))
-                deleteAlert.setMessage("Are you sure you want to delete the contact: " + "Contact #1")
+
+                val contactName = "Contact #1"  // TODO: replace it with actual name
+                deleteAlert.setMessage(String.format(getString(R.string.delete_contact_alert_text), contactName))
 
                 deleteAlert.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel), {
-                    dialogInterface, i ->
-                    deleteAlert.cancel()
+                    dialogInterface, _ ->
+                    dialogInterface.cancel()
                 })
 
                 deleteAlert.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.delete), {
-                    dialogInterface, i ->
+                    _, _ ->
                     // TODO Delete the item from the storage
                     finish()
                 })

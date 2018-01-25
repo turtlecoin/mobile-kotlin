@@ -28,7 +28,7 @@ class AddressBookFragment : Fragment() {
         val adapter = ContactListAdapter(this.context, items)
         val listView = view.findViewById<ListView>(R.id.contact_list)
         listView.adapter = adapter
-        listView.setOnItemClickListener({ arg0, arg1, position, arg3 ->
+        listView.setOnItemClickListener({ _, _, position, _ ->
             val contactItem = listView.getItemAtPosition(position) as ContactItem
 
             // TODO send contactItem to ViewContactActivity
