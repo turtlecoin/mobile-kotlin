@@ -27,8 +27,12 @@ class AddressBookFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (activity.findViewById<ListView>(R.id.contact_list).childCount == 0) {
-            activity.findViewById<LinearLayout>(R.id.no_contacts_container).visibility = View.VISIBLE
+        hideNoContactsText()
+    }
+
+    private fun hideNoContactsText() {
+        if (contact_list.childCount == 0) {
+            no_contacts_container.visibility = View.VISIBLE
         }
     }
 
