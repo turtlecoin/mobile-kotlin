@@ -51,4 +51,5 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="update">Update</string>
+    <string name="receive_address">Receive Address</string>
 </resources>

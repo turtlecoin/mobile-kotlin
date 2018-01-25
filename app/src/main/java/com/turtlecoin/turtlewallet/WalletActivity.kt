@@ -44,6 +44,6 @@ class WalletActivity : AppCompatActivity() {
     }
 
     fun receiveOnClick(view: View) {
-        startActivity(Intent(this, ReceiveCoinActivity::class.java))
+        startActivity(Intent(this, ReceiveAddressActivity::class.java))
     }
 }

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:layout_margin="16dp"
-    tools:context="com.turtlecoin.turtlewallet.ReceiveCoinActivity">
+    tools:context="com.turtlecoin.turtlewallet.ReceiveAddressActivity">
     
     <TextView
         android:layout_width="wrap_content"

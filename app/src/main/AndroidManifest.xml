@@ -36,8 +36,8 @@
                 android:value="com.turtlecoin.turtlewallet.DashboardActivity" />
         </activity>
         <activity
-            android:name=".ReceiveCoinActivity"
-            android:label="Receive Coins"
+            android:name=".ReceiveAddressActivity"
+            android:label="@string/receive_address"
             android:parentActivityName=".WalletActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -52,7 +52,6 @@
         </activity>
         <activity android:name=".EditContactActivity"
             android:label="@string/new_contact"/>
-        <activity android:name=".ViewContactActivity" />
     </application>
 
 </manifest>

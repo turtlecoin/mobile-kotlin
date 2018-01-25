@@ -4,7 +4,6 @@ package com.turtlecoin.turtlewallet
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +11,6 @@ import android.widget.*
 
 import kotlinx.android.synthetic.main.fragment_address_book.*
 import com.turtlecoin.turtlewallet.model.ContactItem
-import android.widget.Toast
-import android.widget.AdapterView
-
-
-
-
 class AddressBookFragment : Fragment() {
 
 
@@ -39,7 +32,7 @@ class AddressBookFragment : Fragment() {
             val contactItem = listView.getItemAtPosition(position) as ContactItem
 
             // TODO send contactItem to ViewContactActivity
-            val intent = Intent(activity, ViewContactActivity::class.java);
+            val intent = Intent(activity, ReceiveAddressActivity::class.java);
             activity.startActivity(intent)
         })
 
