@@ -60,5 +60,7 @@ class NewContactActivity : AppCompatActivity() {
 
     fun addOnClick(view: View) {
         // TODO: store data locally
+
+        finish()
     }
 }
