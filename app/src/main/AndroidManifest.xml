@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.turtlecoin.turtlewallet">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,7 @@
         <activity
             android:name=".DashboardActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".LandingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -35,19 +36,22 @@
                 android:value="com.turtlecoin.turtlewallet.DashboardActivity" />
         </activity>
         <activity
-            android:name=".ReceiveCoinActivity"
-            android:label="Receive Coins"
+            android:name=".ReceiveAddressActivity"
+            android:label="@string/receive_address"
             android:parentActivityName=".WalletActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.turtlecoin.turtlewallet.WalletActivity" />
         </activity>
-        <activity android:name=".SendCoinActivity"
+        <activity
+            android:name=".SendCoinActivity"
             android:parentActivityName=".WalletActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.turtlecoin.turtlewallet.WalletActivity" />
         </activity>
+        <activity android:name=".EditContactActivity"
+            android:label="@string/new_contact"/>
     </application>
 
 </manifest>

@@ -26,6 +26,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
 
+        setTitle(getString(R.string.dashboard))
         showFragment(TotalBalanceFragment())
     }
 
@@ -61,10 +62,20 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.dashboard -> {
+                setTitle(getString(R.string.dashboard))
                 showFragment(TotalBalanceFragment())
             }
+            R.id.address_book -> {
+                setTitle(getString(R.string.address_book))
+                showFragment(AddressBookFragment())
+            }
             R.id.network_info -> {
+                setTitle(getString(R.string.network_info))
                 showFragment(NetworkInfoFragment())
+            }
+            R.id.about -> {
+                setTitle(getString(R.string.about))
+                showFragment(AboutFragment())
             }
             R.id.log_out -> {
                 finish()
@@ -86,5 +97,12 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     fun walletOnClick(view: View) {
         val intent = Intent(this, WalletActivity::class.java);
         startActivity(intent)
+    }
+
+    // From AddressBookFragment
+    fun addContactOnClick(view: View) {
+        val intent = Intent(this, EditContactActivity::class.java);
+        startActivity(intent)
+
     }
 }
