@@ -50,8 +50,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.turtlecoin.turtlewallet.WalletActivity" />
         </activity>
-        <activity android:name=".NewContactActivity"
+        <activity android:name=".EditContactActivity"
             android:label="@string/new_contact"/>
+        <activity android:name=".ViewContactActivity" />
     </application>
 
 </manifest>

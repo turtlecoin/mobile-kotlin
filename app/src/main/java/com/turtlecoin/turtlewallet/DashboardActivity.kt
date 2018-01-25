@@ -99,8 +99,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         startActivity(intent)
     }
 
+    // From AddressBookFragment
     fun addContactOnClick(view: View) {
-        val intent = Intent(this, NewContactActivity::class.java);
+        val intent = Intent(this, EditContactActivity::class.java);
         startActivity(intent)
 
     }

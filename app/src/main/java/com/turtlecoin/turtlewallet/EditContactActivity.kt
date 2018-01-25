@@ -1,25 +1,34 @@
 package com.turtlecoin.turtlewallet
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import com.google.zxing.integration.android.IntentIntegrator
 import com.turtlecoin.turtlewallet.util.AddressValidator
-import kotlinx.android.synthetic.main.activity_new_contact.*
-import kotlinx.android.synthetic.main.fragment_address_book.*
+import kotlinx.android.synthetic.main.activity_edit_contact.*
 
-class NewContactActivity : AppCompatActivity() {
+// It can be creating a new contact or editing an existing contact.
+class EditContactActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_contact)
+        setContentView(R.layout.activity_edit_contact)
 
         // Enable the Up button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        // Todo: get update flag from intent
+        val update = false
+
+        if (update) {
+            done_button.setText(R.string.update)
+        } else {
+            done_button.setText(R.string.add)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -59,7 +68,7 @@ class NewContactActivity : AppCompatActivity() {
     }
 
     fun addOnClick(view: View) {
-        // TODO: store data locally
+        // TODO: if it's a new contact, store the data locally. else, update the data
 
         finish()
     }

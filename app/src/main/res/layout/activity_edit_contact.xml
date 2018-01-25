@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="@dimen/page_margin"
-    tools:context="com.turtlecoin.turtlewallet.NewContactActivity">
+    tools:context="com.turtlecoin.turtlewallet.EditContactActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -51,6 +51,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/done_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/page_margin"

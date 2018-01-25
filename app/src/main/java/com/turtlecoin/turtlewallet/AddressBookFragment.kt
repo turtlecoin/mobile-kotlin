@@ -1,18 +1,21 @@
 package com.turtlecoin.turtlewallet
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.ListView
+import android.widget.*
 
 import kotlinx.android.synthetic.main.fragment_address_book.*
-import android.widget.TextView
-import android.widget.ArrayAdapter
 import com.turtlecoin.turtlewallet.model.ContactItem
+import android.widget.Toast
+import android.widget.AdapterView
+
+
 
 
 class AddressBookFragment : Fragment() {
@@ -24,6 +27,7 @@ class AddressBookFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_address_book, container, false)
 
         val items = ArrayList<ContactItem>()
+        // TODO retrieve data from the local storage
         items.add(ContactItem("Contact #1", "TRTLaaaaaaaa"))
         items.add(ContactItem("Contact #2", "TRTLbbbbbbbb"))
         items.add(ContactItem("Contact #3", "TRTLcccccccc"))
@@ -31,6 +35,13 @@ class AddressBookFragment : Fragment() {
         val adapter = ContactListAdapter(this.context, items)
         val listView = view.findViewById<ListView>(R.id.contact_list)
         listView.adapter = adapter
+        listView.setOnItemClickListener({ arg0, arg1, position, arg3 ->
+            val contactItem = listView.getItemAtPosition(position) as ContactItem
+
+            // TODO send contactItem to ViewContactActivity
+            val intent = Intent(activity, ViewContactActivity::class.java);
+            activity.startActivity(intent)
+        })
 
         return view
     }
@@ -40,8 +51,6 @@ class AddressBookFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         hideNoContactsText()
-
-
     }
 
     private fun hideNoContactsText() {
