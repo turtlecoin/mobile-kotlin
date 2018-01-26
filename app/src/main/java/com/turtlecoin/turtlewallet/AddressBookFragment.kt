@@ -56,7 +56,7 @@ class AddressBookFragment : Fragment() {
     }
 
     private fun hideNoContactsText() {
-        if (contact_list.count == 0){
+        if (contact_list.count == 0) {
             no_contacts_container.visibility = View.VISIBLE
         } else {
             no_contacts_container.visibility = View.GONE
