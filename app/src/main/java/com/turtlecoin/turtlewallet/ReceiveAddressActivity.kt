@@ -128,14 +128,16 @@ class ReceiveAddressActivity : AppCompatActivity() {
         return bitmap
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val edited_name = data!!.extras.getString("edited_name")
-        val edited_address = data!!.extras.getString("edited_address")
-        title = edited_name
-        if(contact!!.address != edited_address) {
-            btn_address.text = edited_address
-            qr.setImageBitmap(encodeAsBitmap(edited_address, 400, 400))
-        }
+        try {
+            val edited_name = data!!.extras.getString("edited_name")
+            val edited_address = data!!.extras.getString("edited_address")
+            title = edited_name
+            if(contact!!.address != edited_address) {
+                btn_address.text = edited_address
+                qr.setImageBitmap(encodeAsBitmap(edited_address, 400, 400))
+            }
+        } catch (re: RuntimeException) {}
     }
 }
