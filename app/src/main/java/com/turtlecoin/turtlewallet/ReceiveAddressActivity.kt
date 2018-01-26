@@ -24,7 +24,7 @@ import com.turtlecoin.turtlewallet.model.ContactItem
 class ReceiveAddressActivity : AppCompatActivity() {
 
     // TODO get editable flag from intent
-    val editable = true
+    var editable = false
 
     var contact: ContactItem? = null
 
@@ -35,7 +35,8 @@ class ReceiveAddressActivity : AppCompatActivity() {
         // Enable the Up button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        contact = intent.extras.getSerializable("contact")!! as ContactItem
+        contact = intent.extras.getSerializable("contact") as ContactItem
+        editable = intent.extras.getBoolean("editable")
 
         btn_address.text = contact!!.address
 
