@@ -7,6 +7,8 @@ import kotlinx.android.synthetic.main.activity_wallet.*
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
 import android.view.View
+import com.turtlecoin.turtlewallet.model.ContactItem
+import java.io.Serializable
 
 class WalletActivity : AppCompatActivity() {
 
@@ -44,6 +46,10 @@ class WalletActivity : AppCompatActivity() {
     }
 
     fun receiveOnClick(view: View) {
-        startActivity(Intent(this, ReceiveAddressActivity::class.java))
+        val testAddress = "TRTLabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
+        val intent = Intent(this, ReceiveAddressActivity::class.java)
+        intent.putExtra("contact", ContactItem(-1, "", testAddress) as Serializable)
+        intent.putExtra("editable", false)
+        this.startActivity(intent)
     }
 }
