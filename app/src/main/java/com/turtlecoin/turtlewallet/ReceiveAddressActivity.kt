@@ -128,7 +128,7 @@ class ReceiveAddressActivity : AppCompatActivity() {
         return bitmap
     }
 
-override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         try {
             val edited_name = data!!.extras.getString("edited_name")
