@@ -25,7 +25,7 @@ class AddressBookFragment : Fragment() {
 
         val view = inflater!!.inflate(R.layout.fragment_address_book, container, false)
 
-        db = DB(activity)
+        db = DB()
 
         val contacts:List<Contact> = db.getContacts()
         val items = ArrayList<ContactItem>()
