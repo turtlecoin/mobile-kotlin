@@ -42,6 +42,7 @@ class AddressBookFragment : Fragment() {
             // TODO send contactItem to ViewContactActivity
             val intent = Intent(activity, ReceiveAddressActivity::class.java)
             intent.putExtra("contact", contactItem as Serializable)
+            intent.putExtra("editable", true)
             activity.startActivity(intent)
         })
 
