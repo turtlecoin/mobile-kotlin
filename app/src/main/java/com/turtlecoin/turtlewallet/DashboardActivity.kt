@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import com.turtlecoin.turtlewallet.db.DB
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.app_bar_dashboard.*
 
@@ -28,6 +29,8 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         setTitle(getString(R.string.dashboard))
         showFragment(TotalBalanceFragment())
+        
+        DB(this)
     }
 
     override fun onBackPressed() {
