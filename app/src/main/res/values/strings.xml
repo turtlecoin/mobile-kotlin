@@ -53,4 +53,6 @@
     <string name="update">Update</string>
     <string name="receive_address">Receive Address</string>
     <string name="delete_contact_alert_text">Are you sure you want to delete the contact: %s</string>
+    <string name="edit_contact_wrong_address">Address invalid</string>
+    <string name="edit_contact_no_alias">Name missing</string>
 </resources>

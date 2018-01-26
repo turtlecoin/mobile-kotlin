@@ -1,13 +1,21 @@
 package com.turtlecoin.turtlewallet.model;
 
 
-public class ContactItem {
-    String name;
-    String address;
+import java.io.Serializable;
 
-    public ContactItem(String name, String address ) {
+public class ContactItem implements Serializable {
+    private Long id;
+    private String name;
+    private String address;
+
+    public ContactItem(Long id, String name, String address ) {
+        this.id = id;
         this.name = name;
         this.address = address;
+    }
+
+    public Long getID() {
+        return id;
     }
 
     public String getName() {

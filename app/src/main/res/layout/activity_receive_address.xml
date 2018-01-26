@@ -31,7 +31,8 @@
         android:textColor="@color/mediumTurtleGreen"
         android:textAllCaps="false"
         android:onClick="copyAddressOnClick"
-        android:text="TRTLabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"/>
+        android:id="@+id/btn_address"
+        android:text=""/>
     
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/qr"

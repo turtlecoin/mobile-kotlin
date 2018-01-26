@@ -95,13 +95,14 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
     fun walletOnClick(view: View) {
-        val intent = Intent(this, WalletActivity::class.java);
+        val intent = Intent(this, WalletActivity::class.java)
         startActivity(intent)
     }
 
     // From AddressBookFragment
     fun addContactOnClick(view: View) {
-        val intent = Intent(this, EditContactActivity::class.java);
+        val intent = Intent(this, EditContactActivity::class.java)
+        intent.putExtra("flag", false)
         startActivity(intent)
 
     }
