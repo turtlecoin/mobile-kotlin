@@ -32,10 +32,10 @@ class SendCoinActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, R.layout.dropdown, formattedContacts)
         address_edit.threshold = 0
         address_edit.setAdapter(adapter)
-        address_edit.setOnItemClickListener {_, view, _, _ ->
+        address_edit.setOnItemClickListener {_, view, pos, _ ->
             val tv = view as TextView
             val txt = tv.text
-            address_edit.setText(txt.substring(0, txt.indexOf(":") - 1))
+            address_edit.setText(contacts[pos].address)
         }
         address_edit.setOnClickListener { address_edit.showDropDown() }
     }
