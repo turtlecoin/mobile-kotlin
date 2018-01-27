@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Toast
 import com.google.zxing.integration.android.IntentIntegrator
 import com.turtlecoin.turtlewallet.db.DB
-import com.turtlecoin.turtlewallet.util.AddressValidator
+import com.turtlecoin.turtlewallet.util.AddressHelper
 import kotlinx.android.synthetic.main.activity_edit_contact.*
 import android.app.Activity
 import com.turtlecoin.turtlewallet.model.ContactItem
@@ -64,7 +64,7 @@ class EditContactActivity : AppCompatActivity() {
             val scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent)
             if (scanResult != null) {
                 val contents = intent.getStringExtra("SCAN_RESULT")
-                if (AddressValidator(contents)) {
+                if (AddressHelper().validate(contents)) {
                     address_edit.setText(contents)
                 } else {
                     Toast.makeText(this, R.string.qr_scan_wrong, Toast.LENGTH_LONG).show()
@@ -82,7 +82,7 @@ class EditContactActivity : AppCompatActivity() {
         val edited_address = address_edit.text.toString()
 
         if(name_edit.text.isNotEmpty()) {
-            if (AddressValidator(edited_address)) {
+            if (AddressHelper().validate(edited_address)) {
                 val db = DB()
 
                 if(update) {
