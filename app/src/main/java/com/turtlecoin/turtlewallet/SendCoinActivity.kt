@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_send_coin.*
 import com.google.zxing.integration.android.IntentIntegrator
 import com.turtlecoin.turtlewallet.db.Contact
 import com.turtlecoin.turtlewallet.db.DB
-import com.turtlecoin.turtlewallet.util.AddressValidator
+import com.turtlecoin.turtlewallet.util.AddressHelper
 
 class SendCoinActivity : AppCompatActivity() {
 
@@ -26,7 +26,7 @@ class SendCoinActivity : AppCompatActivity() {
         val contacts:List<Contact> = db.getContacts()
         val formattedContacts = ArrayList<String>()
         for (c in contacts) {
-            formattedContacts.add(c.alias + " : " + c.address)
+            formattedContacts.add(AddressHelper().truncate(c.address) + " : " + c.alias)
         }
 
         val adapter = ArrayAdapter(this, R.layout.dropdown, formattedContacts)
@@ -35,7 +35,7 @@ class SendCoinActivity : AppCompatActivity() {
         address_edit.setOnItemClickListener {_, view, _, _ ->
             val tv = view as TextView
             val txt = tv.text
-            address_edit.setText(txt.substring(txt.indexOf(":") + 2, txt.length))
+            address_edit.setText(txt.substring(0, txt.indexOf(":") - 1))
         }
         address_edit.setOnClickListener { address_edit.showDropDown() }
     }
@@ -53,7 +53,7 @@ class SendCoinActivity : AppCompatActivity() {
             val scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent)
             if (scanResult != null) {
                 val contents = intent.getStringExtra("SCAN_RESULT")
-                if (AddressValidator(contents)) {
+                if (AddressHelper().validate(contents)) {
                     address_edit.setText(contents)
                 } else {
                     Toast.makeText(this, R.string.qr_scan_wrong, Toast.LENGTH_LONG).show()
