@@ -34,10 +34,8 @@ class EditContactActivity : AppCompatActivity() {
 
             name_edit.setText(contact!!.name)
             address_edit.setText(contact!!.address)
-        }
-
-        if (update) {
             done_button.setText(R.string.update)
+            title = getString(R.string.edit_contact)
         } else {
             done_button.setText(R.string.add)
         }
