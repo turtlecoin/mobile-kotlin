@@ -17,15 +17,16 @@ import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.turtlecoin.turtlewallet.db.DB
+import com.turtlecoin.turtlewallet.model.ContactItem
 
 
 class ReceiveAddressActivity : AppCompatActivity() {
 
-    //Placeholder Address
-    val userAddress = "TRTLv1oRF2WBuNUYT9eLb1fhqHFht6nU2fAzuGwoATV23dHMeeBmLbMiatkv3V1iAUVTWduX2HUB8KbWAKqks9bq8xHHyVLf4gr"
-
     // TODO get editable flag from intent
-    val editable = true
+    var editable = false
+
+    var contact: ContactItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +35,17 @@ class ReceiveAddressActivity : AppCompatActivity() {
         // Enable the Up button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        qr.setImageBitmap(encodeAsBitmap(userAddress, 400,400))
+        contact = intent.extras.getSerializable("contact") as ContactItem
+        editable = intent.extras.getBoolean("editable")
+
+        btn_address.text = contact!!.address
+
+        qr.setImageBitmap(encodeAsBitmap(contact!!.address, 400,400))
 
         if (editable) {
-            title = "Contact #1" // replace it with the contact's name
+            title = contact!!.name
         } else {
-            title = getString(R.string.receive_address)
+            title = contact!!.address
         }
     }
 
@@ -55,17 +61,17 @@ class ReceiveAddressActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_edit -> {
-                // TODO send the current contactItem
-                val intent = Intent(this, EditContactActivity::class.java);
-                startActivity(intent)
+                val intent = Intent(this, EditContactActivity::class.java)
+                intent.putExtra("contact", contact)
+                intent.putExtra("flag", true)
+                startActivityForResult(intent, 1337)
                 return true
             }
             R.id.action_delete -> {
                 val deleteAlert = AlertDialog.Builder(this).create()
                 deleteAlert.setTitle(getString(R.string.delete))
 
-                val contactName = "Contact #1"  // TODO: replace it with actual name
-                deleteAlert.setMessage(String.format(getString(R.string.delete_contact_alert_text), contactName))
+                deleteAlert.setMessage(String.format(getString(R.string.delete_contact_alert_text), contact!!.name))
 
                 deleteAlert.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel), {
                     dialogInterface, _ ->
@@ -74,7 +80,8 @@ class ReceiveAddressActivity : AppCompatActivity() {
 
                 deleteAlert.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.delete), {
                     _, _ ->
-                    // TODO Delete the item from the storage
+                    val db = DB()
+                    db.deleteContact(contact!!.id)
                     finish()
                 })
 
@@ -93,7 +100,7 @@ class ReceiveAddressActivity : AppCompatActivity() {
     // Copy userAddress into Android Clipboard
     fun copyAddressOnClick(view: View) {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("Address", userAddress)
+        val clip = ClipData.newPlainText("Address", contact!!.address)
         clipboard.primaryClip = clip
         Toast.makeText(this, R.string.clipboard_copied, Toast.LENGTH_SHORT).show()
     }
@@ -120,5 +127,18 @@ class ReceiveAddressActivity : AppCompatActivity() {
         val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
         bitmap.setPixels(pixels, 0, WIDTH, 0, 0, w, h)
         return bitmap
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        try {
+            val edited_name = data!!.extras.getString("edited_name")
+            val edited_address = data!!.extras.getString("edited_address")
+            title = edited_name
+            if(contact!!.address != edited_address) {
+                btn_address.text = edited_address
+                qr.setImageBitmap(encodeAsBitmap(edited_address, 400, 400))
+            }
+        } catch (re: RuntimeException) {}
     }
 }

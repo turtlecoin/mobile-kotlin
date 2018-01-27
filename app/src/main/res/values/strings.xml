@@ -46,6 +46,7 @@
     <string name="add">Add</string>
     <string name="no_contacts_text">No Contacts Yet</string>
     <string name="new_contact">New Contact</string>
+    <string name="edit_contact">Edit Contact</string>
 
     <string name="cancel">Cancel</string>
     <string name="edit">Edit</string>
@@ -53,4 +54,6 @@
     <string name="update">Update</string>
     <string name="receive_address">Receive Address</string>
     <string name="delete_contact_alert_text">Are you sure you want to delete the contact: %s</string>
+    <string name="edit_contact_wrong_address">Invalid address</string>
+    <string name="edit_contact_no_alias">Missing name</string>
 </resources>

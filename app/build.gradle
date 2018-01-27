@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -38,4 +40,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.3.4'
     compile 'com.journeyapps:zxing-android-embedded:+'
+    compile "android.arch.persistence.room:runtime:+"
+    kapt "android.arch.persistence.room:compiler:+"
 }
