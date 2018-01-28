@@ -1,5 +1,6 @@
 package com.turtlecoin.turtlewallet.db
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
@@ -9,6 +10,9 @@ interface ContactDao {
 
     @Query("SELECT * FROM contact")
     fun getContacts(): List<Contact>
+
+    @Query("SELECT * FROM contact")
+    fun observeContacts(): LiveData<List<Contact>>
 
     @Insert
     fun insert(contact: Contact)

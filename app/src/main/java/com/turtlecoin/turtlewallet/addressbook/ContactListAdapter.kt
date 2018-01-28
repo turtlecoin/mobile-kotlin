@@ -1,15 +1,15 @@
-package com.turtlecoin.turtlewallet
+package com.turtlecoin.turtlewallet.addressbook
 
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.turtlecoin.turtlewallet.R
 import com.turtlecoin.turtlewallet.model.ContactItem
 import kotlinx.android.synthetic.main.contact_item.view.*
-import java.util.ArrayList
 
-class ContactListAdapter(private val context: Context, private val contactList: ArrayList<ContactItem>) : BaseAdapter() {
+class ContactListAdapter(private val context: Context, var contactList: List<ContactItem>) : BaseAdapter() {
     override fun getCount(): Int {
         return contactList.size
     }
@@ -32,8 +32,8 @@ class ContactListAdapter(private val context: Context, private val contactList: 
         }
         view.tag = holder
 
-        holder.name.setText(contactList[position].name)
-        holder.address.setText(contactList[position].address)
+        holder.name.text = contactList[position].name
+        holder.address.text = contactList[position].address
 
         return view
     }
@@ -42,4 +42,5 @@ class ContactListAdapter(private val context: Context, private val contactList: 
         var name: TextView = view.contact_name
         var address: TextView = view.contact_address
     }
+
 }
