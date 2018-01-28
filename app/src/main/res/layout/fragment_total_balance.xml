@@ -24,9 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="12.3MM TRTL"
-        android:textColor="@color/darkTextColor"
-        android:textStyle="bold"
-        android:textSize="18sp"
+        android:textAppearance="@style/BoldHeader"
         android:layout_below="@id/total_balance_title"
         android:layout_alignLeft="@id/total_balance_title"
         android:layout_alignStart="@id/total_balance_title" />
@@ -69,7 +67,7 @@
         android:text="@string/market_data"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@color/darkTextColor"
+        android:textColor="@color/darkText"
         android:layout_below="@id/wallets_scroll"
         android:layout_alignLeft="@id/wallets_scroll"
         android:layout_alignStart="@id/wallets_scroll" />

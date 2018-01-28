@@ -18,14 +18,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="20sp"
-            android:textColor="@color/darkTextColor"
+            android:textColor="@color/darkText"
             android:text="@string/licenses" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/page_margin"
-            android:textColor="@color/darkTextColor"
+            android:textColor="@color/darkText"
             android:text="@string/zxing_license_title" />
 
         <TextView

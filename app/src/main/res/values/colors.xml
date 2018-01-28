@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#2ecc71</color>
+    <!-- Color aliases, used to easily change the value in values-night -->
+    <color name="colorPrimary">@color/mediumGrayText</color>
+    <color name="colorPrimaryDark">@color/darkTextColor</color>
+    <color name="colorAccent">@color/brightTurtleGreen</color>
+    <color name="darkText">@color/darkTextColor</color>
+    <color name="lightText">@color/darkTextColor</color>
+    <color name="qrIconColor">@color/darkTextColor</color>
+    <color name="navItemColor">@color/darkTextColor</color>
+
+    <!-- Actual colors -->
     <color name="darkTextColor">#212721</color>
+    <color name="brightTurtleGreen">#2ecc71</color>
     <color name="mediumTurtleGreen">#339D64</color>
     <color name="mediumGrayText">#4d524d</color>
     <color name="white">#FFF</color>

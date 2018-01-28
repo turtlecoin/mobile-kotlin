@@ -21,6 +21,11 @@
             android:title="@string/network_info" />
 
         <item
+            android:id="@+id/drawer_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/settings" />
+
+        <item
             android:id="@+id/about"
             android:icon="@drawable/ic_info_outline"
             android:title="@string/about" />

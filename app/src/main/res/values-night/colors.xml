@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Color aliases, used to easily change the value in values-night -->
+    <color name="colorPrimary">@color/mediumGrayText</color>
+    <color name="colorPrimaryDark">@color/darkTextColor</color>
+    <color name="colorAccent">@color/brightTurtleGreen</color>
+    <color name="darkText">@color/white</color>
+    <color name="lightText">@color/darkTextColor</color>
+    <color name="qrIconColor">@color/white</color>
+    <color name="navItemColor">@color/white</color>
+</resources>

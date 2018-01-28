@@ -22,7 +22,7 @@
         android:id="@+id/transaction_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/darkTextColor"
+        android:textColor="@color/darkText"
         app:layout_row="1"
         app:layout_column="0"
         app:layout_rowWeight="1"

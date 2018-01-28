@@ -19,7 +19,7 @@
         android:layout_marginLeft="@dimen/text_margin"
         android:layout_marginBottom="@dimen/half_margin"
         android:textSize="16sp"
-        android:textColor="@color/darkTextColor"
+        android:textColor="@color/darkText"
         android:textStyle="bold"
         android:text="@string/transactions" />
 
