@@ -1,7 +1,9 @@
 package com.turtlecoin.turtlewallet
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
@@ -11,25 +13,33 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.turtlecoin.turtlewallet.db.DB
+import com.turtlecoin.turtlewallet.settings.SettingsFragment
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.app_bar_dashboard.*
 
 class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
+    private var currentFragment : Fragment? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         setSupportActionBar(toolbar)
-
-        val toggle = ActionBarDrawerToggle(
+           val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
 
-        setTitle(getString(R.string.dashboard))
-        showFragment(TotalBalanceFragment())
-        
+        if (savedInstanceState != null){
+            currentFragment = supportFragmentManager.getFragment(savedInstanceState, FRAGMENT_TAG)
+        }else {
+            if (intent.getBooleanExtra(SETTING_FRAGMENT, false)) {
+                title = getString(R.string.settings)
+                showFragment(SettingsFragment())
+            } else {
+                title = getString(R.string.dashboard)
+                showFragment(TotalBalanceFragment())
+            }
+        }
         DB(this)
     }
 
@@ -41,10 +51,16 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         } else if (fragment !is TotalBalanceFragment) {
             //if the current fragment is not the top fragment, go to the top fragment
             showFragment(TotalBalanceFragment(), true)
+            title = getString(R.string.dashboard)
             (nav_view.menu.getItem(0).setChecked(true))
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        supportFragmentManager.putFragment(outState, FRAGMENT_TAG, currentFragment)
+        super.onSaveInstanceState(outState)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -65,19 +81,23 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.dashboard -> {
-                setTitle(getString(R.string.dashboard))
+                title = getString(R.string.dashboard)
                 showFragment(TotalBalanceFragment())
             }
             R.id.address_book -> {
-                setTitle(getString(R.string.address_book))
+                title = getString(R.string.address_book)
                 showFragment(AddressBookFragment())
             }
             R.id.network_info -> {
-                setTitle(getString(R.string.network_info))
+                title = getString(R.string.network_info)
                 showFragment(NetworkInfoFragment())
             }
+            R.id.drawer_settings -> {
+                title = getString(R.string.settings)
+                showFragment(SettingsFragment())
+            }
             R.id.about -> {
-                setTitle(getString(R.string.about))
+                title = getString(R.string.about)
                 showFragment(AboutFragment())
             }
             R.id.log_out -> {
@@ -95,6 +115,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
         ft.replace(R.id.main_frame_layout, fragment)
         ft.commit()
+        currentFragment = fragment
     }
 
     fun walletOnClick(view: View) {
@@ -108,5 +129,17 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         intent.putExtra("flag", false)
         startActivity(intent)
 
+    }
+
+    companion object {
+        fun createSettingsIntent(context: Context) : Intent{
+            val intent = Intent(context, DashboardActivity::class.java)
+            intent.putExtra(SETTING_FRAGMENT, true)
+            return intent
+        }
+
+        private val SETTING_FRAGMENT = "settings_fragment"
+        private val SETTINGS_PROCESSED = "settings_processed"
+        private val FRAGMENT_TAG = "current_fragment"
     }
 }
