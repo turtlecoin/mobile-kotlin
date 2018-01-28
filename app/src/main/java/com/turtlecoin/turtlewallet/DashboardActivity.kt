@@ -3,7 +3,6 @@ package com.turtlecoin.turtlewallet
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
@@ -12,7 +11,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.turtlecoin.turtlewallet.db.DB
+import com.turtlecoin.turtlewallet.addressbook.AddressBookFragment
+import com.turtlecoin.turtlewallet.networkinfo.NetworkInfoFragment
 import com.turtlecoin.turtlewallet.settings.SettingsFragment
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.app_bar_dashboard.*
@@ -40,7 +40,6 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 showFragment(TotalBalanceFragment())
             }
         }
-        DB(this)
     }
 
     override fun onBackPressed() {

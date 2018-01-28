@@ -17,8 +17,10 @@ import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.turtlecoin.turtlewallet.db.DB
+import com.turtlecoin.turtlewallet.db.ContactDatabase
 import com.turtlecoin.turtlewallet.model.ContactItem
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.launch
 
 
 class ReceiveAddressActivity : AppCompatActivity() {
@@ -40,7 +42,7 @@ class ReceiveAddressActivity : AppCompatActivity() {
 
         btn_address.text = contact!!.address
 
-        qr.setImageBitmap(encodeAsBitmap(contact!!.address, 400,400))
+        qr.setImageBitmap(encodeAsBitmap(contact!!.address, 400, 400))
 
         if (editable) {
             title = contact!!.name
@@ -73,16 +75,15 @@ class ReceiveAddressActivity : AppCompatActivity() {
 
                 deleteAlert.setMessage(String.format(getString(R.string.delete_contact_alert_text), contact!!.name))
 
-                deleteAlert.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel), {
-                    dialogInterface, _ ->
+                deleteAlert.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel), { dialogInterface, _ ->
                     dialogInterface.cancel()
                 })
 
-                deleteAlert.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.delete), {
-                    _, _ ->
-                    val db = DB()
-                    db.deleteContact(contact!!.id)
-                    finish()
+                deleteAlert.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.delete), { _, _ ->
+                    launch(UI) {
+                        ContactDatabase.deleteContact(contact!!.id).await()
+                        finish()
+                    }
                 })
 
                 deleteAlert.show()
@@ -135,10 +136,11 @@ class ReceiveAddressActivity : AppCompatActivity() {
             val edited_name = data!!.extras.getString("edited_name")
             val edited_address = data!!.extras.getString("edited_address")
             title = edited_name
-            if(contact!!.address != edited_address) {
+            if (contact!!.address != edited_address) {
                 btn_address.text = edited_address
                 qr.setImageBitmap(encodeAsBitmap(edited_address, 400, 400))
             }
-        } catch (re: RuntimeException) {}
+        } catch (re: RuntimeException) {
+        }
     }
 }

@@ -7,11 +7,15 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.google.zxing.integration.android.IntentIntegrator
-import com.turtlecoin.turtlewallet.db.DB
 import com.turtlecoin.turtlewallet.util.AddressHelper
 import kotlinx.android.synthetic.main.activity_edit_contact.*
 import android.app.Activity
+import com.turtlecoin.turtlewallet.db.ContactDatabase
 import com.turtlecoin.turtlewallet.model.ContactItem
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.experimental.withContext
 
 
 // It can be creating a new contact or editing an existing contact.
@@ -83,19 +87,21 @@ class EditContactActivity : AppCompatActivity() {
 
         if(name_edit.text.isNotEmpty()) {
             if (AddressHelper().validate(edited_address)) {
-                val db = DB()
+                launch(UI) {
+                    if (update) {
+                        ContactDatabase.editContact(contact!!.id, edited_name, edited_address).await()
+                    } else {
+                        ContactDatabase.addContact(edited_name, edited_address).await()
+                    }
 
-                if(update) {
-                    db.editContact(contact!!.id, edited_name, edited_address)
-                } else {
-                    db.addContact(edited_name, edited_address)
+                    val returnIntent = Intent()
+                    returnIntent.putExtra("edited_name", edited_name)
+                    returnIntent.putExtra("edited_address", edited_address)
+                    setResult(Activity.RESULT_OK, returnIntent)
+                    withContext(UI) {
+                        finish()
+                    }
                 }
-
-                val returnIntent = Intent()
-                returnIntent.putExtra("edited_name", edited_name)
-                returnIntent.putExtra("edited_address", edited_address)
-                setResult(Activity.RESULT_OK, returnIntent)
-                finish()
             } else {
                 Toast.makeText(this, R.string.edit_contact_wrong_address, Toast.LENGTH_LONG).show()
             }
